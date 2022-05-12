@@ -16,12 +16,9 @@ const SearchPage = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([] as CardProps[]);
   const fetchResults = async () => {
-    // const { data } = await axios.get(
-    //   `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_APIKEY}&page=${page}`
-    // );
     setLoading(true);
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/search/${type}?api_key=38ec201fb1fa7cdffa88b74569f61507&language=en-US&query=${query}&page=${page}&include_adult=false`
+      `https://api.themoviedb.org/3/search/${type}?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
     );
     let shapedData;
     if (type === "movie") {
