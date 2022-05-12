@@ -10,12 +10,9 @@ const TrendingPage = () => {
   const [loading, setLoading] = useState(true);
   const [content, setContent] = useState([] as CardProps[]);
   const fetchTrending = async () => {
-    // const { data } = await axios.get(
-    //   `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_APIKEY}&page=${page}`
-    // );
     setLoading(true);
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=38ec201fb1fa7cdffa88b74569f61507&page=${page}`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_APIKEY}&page=${page}`
     );
     const shapedData = shapeContentData(data.results);
     setContent(shapedData);
