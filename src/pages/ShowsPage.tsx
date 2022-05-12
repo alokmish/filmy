@@ -15,12 +15,9 @@ const ShowsPage = () => {
   const [genres, setGenres] = useState([] as IGenre[]);
   const genreListForURL = useGenre(selectedGenres);
   const fetchShows = async () => {
-    // const { data } = await axios.get(
-    //   `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_APIKEY}&page=${page}`
-    // );
     setLoading(true);
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/tv?api_key=38ec201fb1fa7cdffa88b74569f61507&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreListForURL}`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreListForURL}`
     );
     const shapedData = shapeShowData(data.results);
     setContent(shapedData);
